@@ -35,20 +35,14 @@ android {
 }
 
 dependencies {
-    // Core module
     implementation(project(":core"))
-    
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    
-    // OkHttp
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
-    
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    
-    // Javax Inject
-    implementation("javax.inject:javax.inject:1")
+
+    implementation(libs.squareup.retrofit2.retrofit)
+    implementation(libs.squareup.retrofit2.converter.gson)
+
+    implementation(libs.squareup.okhttp3.okhttp)
+    implementation(libs.squareup.okhttp3.logging.interceptor)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.javax.inject)
 }
