@@ -15,7 +15,9 @@ out/
 #  Uncomment the following line in case you need and you don't have the release build type files in your app
 # release/
 
-# Gradle files
+# Gradle files (local caches; do not commit)
+# If .gradle/ still appears in git status, it was tracked before this rule — run:
+#   git rm -r --cached .gradle
 .gradle/
 build/
 
