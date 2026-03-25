@@ -3,11 +3,15 @@ package com.example.feature.users.presentation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Groups
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.coreui.components.ErrorMessage
@@ -40,7 +44,7 @@ fun UsersScreen(
         Box(modifier = Modifier.padding(paddingValues)) {
             when (usersState) {
                 is UiState.Idle -> {
-                    // Initial state - could show empty state
+                    UsersIdleState(onLoad = viewModel::getUsers)
                 }
                 
                 is UiState.Loading -> {
@@ -59,6 +63,46 @@ fun UsersScreen(
                         onRetry = { viewModel.retry() }
                     )
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun UsersIdleState(
+    onLoad: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(24.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Groups,
+                contentDescription = null,
+                modifier = Modifier.size(72.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "No users yet",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Load the list to see users here.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            FilledTonalButton(onClick = onLoad) {
+                Text("Load users")
             }
         }
     }
