@@ -1,11 +1,12 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
     namespace = "com.example.coreui"
-    compileSdk = 34
+    compileSdk = 36
     
     defaultConfig {
         minSdk = 24
@@ -35,10 +36,6 @@ android {
     
     buildFeatures {
         compose = true
-    }
-    
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
     }
 }
 

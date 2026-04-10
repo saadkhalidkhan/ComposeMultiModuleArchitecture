@@ -1,13 +1,14 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.kotlin.compose)
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
 
 android {
     namespace = "com.example.feature.users"
-    compileSdk = 34
+    compileSdk = 36
     
     defaultConfig {
         minSdk = 24
@@ -37,10 +38,6 @@ android {
     
     buildFeatures {
         compose = true
-    }
-    
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
     }
 }
 

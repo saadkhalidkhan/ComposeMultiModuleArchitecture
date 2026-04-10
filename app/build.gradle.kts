@@ -1,18 +1,19 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.kotlin.compose)
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
 
 android {
     namespace = "com.example.modularcomposecleanarchitecture"
-    compileSdk = 34
+    compileSdk = 36
     
     defaultConfig {
         applicationId = "com.example.modularcomposecleanarchitecture"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
         
@@ -43,10 +44,6 @@ android {
     
     buildFeatures {
         compose = true
-    }
-    
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
     }
     
     packaging {
